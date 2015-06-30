@@ -20,29 +20,8 @@
     file: path={{ kafka_workdir }} src=/usr/local/lib/{{ kafka_pkg }} state=link
     sudo: yes
 
-  - name: set advertised hostname in kafka config
-    lineinfile: >
-      dest="{{ kafka_workdir }}/config/server.properties"
-      regexp='#advertised\.host\.name=<hostname routable by clients>'
-      line='advertised.host.name={{ private_ip }}'
+  - name: load kafka config
+    template: src=server.properties.j2 dest="{{ kafka_workdir }}/config/server.properties"
     sudo: yes
-    notify:
-      - start kafka
-
-  - name: set advertised port in kafka config
-    lineinfile: >
-      dest="{{ kafka_workdir }}/config/server.properties"
-      regexp='#advertised\.port=<port accessible by clients>'
-      line='advertised.port=9092'
-    sudo: yes
-    notify:
-      - start kafka
-
-  - name: uncomment and set hostname in kafka config
-    lineinfile: >
-      dest="{{ kafka_workdir }}/config/server.properties"
-      regexp='#host\.name=localhost'
-      line='host.name={{ private_ip }}'
-    sudo: yes
-    notify:
-      - start kafka
+    # notify:
+    #   - start kafka
