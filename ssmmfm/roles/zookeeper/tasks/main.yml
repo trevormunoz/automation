@@ -1,0 +1,31 @@
+---
+    - name: install java
+      apt: name=openjdk-7-jre-headless update_cache=yes cache_valid_time=3600
+      sudo: yes
+
+    - name: download zookeeper
+      get_url: >
+        url=http://apache.arvixe.com/zookeeper/{{ zookeeper_version }}/{{ zookeeper_version }}.tar.gz
+        dest=/home/vagrant/{{ zookeeper_version }}.tar.gz
+      sudo: yes
+
+    - name: ensure dir for zookeeper exists
+      file: dest=/usr/local/lib state=directory mode=0755
+      sudo: yes
+
+    - name: unarchive zookeeper
+      unarchive: >
+        src=/home/vagrant/{{ zookeeper_version }}.tar.gz
+        dest=/usr/local/lib
+        copy=no
+      sudo: yes
+
+    - name: symlink zookeeper
+      file: path={{ zookeeper_workdir }} src=/usr/local/lib/{{ zookeeper_version }} state=link
+      sudo: yes
+
+    - name: create zookeeper conf file
+      copy: src=zoo.cfg dest={{ zookeeper_workdir}}/conf/zoo.cfg
+      sudo: yes
+      notify:
+        - start zookeeper

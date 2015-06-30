@@ -1,0 +1,7 @@
+---
+  - name: set up apache kafka + bootstrap for ssmmfm
+    hosts: local
+    user: ubuntu  # Vagrantfile overrides for vagrant
+    roles:
+      - zookeeper
+      - kafka

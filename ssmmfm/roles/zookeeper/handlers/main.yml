@@ -1,0 +1,9 @@
+---
+    - name: start zookeeper
+      command: bin/zkServer.sh start
+      sudo: yes
+      args:
+        chdir: "{{ zookeeper_workdir }}"
+        creates: /var/run/zookeeper/zookeeper_server.pid
+      register: zookeeper_start_results
+      failed_when: "'FAILED' in zookeeper_start_results.stderr"

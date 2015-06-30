@@ -1,0 +1,11 @@
+---
+    - name: start kafka
+      shell: "{{ kafka_workdir }}/bin/kafka-server-start.sh {{ kafka_workdir }}/config/server.properties &"
+      sudo: yes
+      args:
+        chdir: "{{ kafka_workdir }}"
+      register: command_start_kafka
+      notify: report kafka info
+
+    - name: report kafka info
+      shell: echo command_start_kafka.stdout > /home/vagrant/start_kafka.txt
