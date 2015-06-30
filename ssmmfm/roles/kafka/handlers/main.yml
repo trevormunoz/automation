@@ -1,6 +1,6 @@
 ---
     - name: start kafka
-      shell: "{{ kafka_workdir }}/bin/kafka-server-start.sh {{ kafka_workdir }}/config/server.properties &"
+      shell: bin/kafka-server-start.sh config/server.properties & chdir="{{ kafka_workdir }}"
       sudo: yes
       register: command_start_kafka
       notify: report kafka info
