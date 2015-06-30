@@ -24,7 +24,7 @@
     lineinfile: >
       dest="{{ kafka_workdir }}/config/server.properties"
       regexp='#advertised\.host\.name=<hostname routable by clients>'
-      line='advertised.host.name=localhost'
+      line='advertised.host.name={{ private_ip }}'
     sudo: yes
     notify:
       - start kafka
@@ -42,7 +42,7 @@
     lineinfile: >
       dest="{{ kafka_workdir }}/config/server.properties"
       regexp='#host\.name=localhost'
-      line='host.name=localhost'
+      line='host.name={{ private_ip }}'
     sudo: yes
     notify:
       - start kafka
