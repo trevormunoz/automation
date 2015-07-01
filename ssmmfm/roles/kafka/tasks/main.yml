@@ -23,5 +23,5 @@
   - name: load kafka config
     template: src=server.properties.j2 dest="{{ kafka_workdir }}/config/server.properties"
     sudo: yes
-    # notify:
-    #   - start kafka
+    notify:
+      - start kafka
