@@ -1,6 +1,6 @@
 ---
     - name: start kafka
-      command: nohup {{ kafka_workdir }}/bin/kafka-server-start.sh {{ kafka_workdir }}/config/server.properties
+      command: nohup {{ kafka_workdir }}/bin/kafka-server-start.sh -daemon {{ kafka_workdir }}/config/server.properties
       sudo: yes
       async: 45
       poll: 0
