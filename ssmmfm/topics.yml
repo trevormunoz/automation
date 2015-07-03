@@ -1,0 +1,17 @@
+---
+  - name: set topic channels for ssmmfm
+    hosts: local
+    user: vagrant
+    tasks:
+      - name: set kafka topics
+        command: >
+          "{{ kafka_workdir }}/bin/kafka-topics.sh"
+          --create
+          --zookeeper {{ private_ip }}:2181
+          --replication-factor 1
+          --partitions 1
+          --topic {{ item }}
+        with_items:
+          - nypl
+          - error
+          - pf_item
