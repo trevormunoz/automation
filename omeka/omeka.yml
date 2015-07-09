@@ -1,0 +1,10 @@
+---
+  - name: set up an omeka server
+    hosts: local
+    user: ubuntu  # Vagrantfile overrides for vagrant
+    roles:
+      - php
+      - mysql
+      - httpd
+      - omeka-deps
+      - omeka
