@@ -5,6 +5,6 @@
     roles:
       - php
       - mysql
-      - httpd
+      - apache
       - omeka-deps
       - omeka
