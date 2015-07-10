@@ -1,0 +1,21 @@
+---
+  - name: download omeka
+    get_url: >
+      url=http://omeka.org/files/{{ omeka.pkg }}.zip
+      dest=/home/vagrant/{{ omeka.pkg }}.zip
+    sudo: yes
+
+  - name: ensure dir for omeka exists
+    file: dest=/usr/local/lib state=directory mode=0755
+    sudo: yes
+
+  - name: unzip omeka
+    unarchive: >
+      src=/home/vagrant/{{ omeka.pkg }}.zip
+      dest=/usr/local/lib
+      copy=no
+    sudo: yes
+
+  - name: symlink omeka
+    file: path=/var/www/{{ omeka.pkg }} src=/usr/local/lib/{{ omeka.pkg }} state=link
+    sudo: yes
