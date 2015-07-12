@@ -1,11 +1,4 @@
 ---
-  - name: install apache httpd
-    apt: pkg={{ item }} update_cache=yes cache_valid_time=3600
-    with_items:
-      - apache2
-      - libapache2-mod-php5
-    sudo: yes
-
   - name: enable mod_rewrite
     apache2_module: name=rewrite state=present
     sudo: yes

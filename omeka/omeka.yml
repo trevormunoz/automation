@@ -3,8 +3,7 @@
     hosts: local
     user: ubuntu  # Vagrantfile overrides for vagrant
     roles:
-      - php
+      - system
       - mysql
       - apache
-      - omeka-deps
       - omeka

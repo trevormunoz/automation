@@ -1,0 +1,13 @@
+---
+  - name: install packages
+    apt: pkg={{ item }} update_cache=yes cache_valid_time=3600
+    with_items:
+      - php5
+      - php5-mysql
+      - apache2
+      - libapache2-mod-php5
+      - mysql-server
+      - python-mysqldb #for ansible
+      - unzip
+      - imagemagick
+    sudo: yes
