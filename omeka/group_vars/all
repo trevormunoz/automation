@@ -9,5 +9,5 @@ db:
   name: omeka
 server:
   admin_email: tmunoz@umd.edu
-  name: example.com
-  alias: www.example.com
+  name: omeka.local
+  alias: dev.omeka.local
