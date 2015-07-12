@@ -1,0 +1,8 @@
+---
+  - name: dump local omeka db for backup
+    hosts: local
+    user: vagrant
+    tasks:
+      - name: dump omeka db to omeka-local.sql
+        mysql_db: state=dump name={{ db.name }} target=/home/vagrant/omeka-local.sql
+        sudo: yes
