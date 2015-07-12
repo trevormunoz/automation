@@ -1,3 +1,13 @@
 ---
+mysql_root_password: changeme
 omeka:
   pkg: omeka-2.0
+db:
+  host: localhost
+  user: omeka
+  password: changeme
+  name: omeka
+server:
+  admin_email: tmunoz@umd.edu
+  name: example.com
+  alias: www.example.com

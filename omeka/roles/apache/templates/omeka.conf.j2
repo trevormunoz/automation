@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+    ServerAdmin {{ server.admin_email }}
+    ServerName {{ server.name }}
+    ServerAlias {{ server.alias }}
+    DocumentRoot /var/www/{{ omeka.pkg }}/
+    <Directory /var/www/{{ omeka.pkg }}/>
+       Options Indexes FollowSymLinks
+       AllowOverride All
+       Require all granted
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
