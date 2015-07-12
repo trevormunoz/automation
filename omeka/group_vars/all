@@ -1,7 +1,7 @@
 ---
 mysql_root_password: changeme
 omeka:
-  pkg: omeka-2.0
+  pkg: omeka-2.3
 db:
   host: localhost
   user: omeka
