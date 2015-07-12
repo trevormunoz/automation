@@ -1,0 +1,5 @@
+[local]
+wordpress-vagrant ansible_ssh_host=192.168.33.10
+
+[stage]
+omeka.remote.do.com

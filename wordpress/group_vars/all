@@ -1,0 +1,14 @@
+---
+mysql_root_password: changeme
+db:
+  name: wordpress
+  user: wordpress
+  password: changeme
+  host: localhost
+server:
+  name: wordpress.local
+wp:
+  version: 4.2.2
+  sha256sum: 3c4e2cc3af289366ff5352e35c3f80fca2dcaed3d56a79f33b25374c356c3f90
+  auto_up_disable: false
+  core_update_level: true
