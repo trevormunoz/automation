@@ -1,0 +1,33 @@
+---
+  - name: make sure plugins directory exists
+    stat: path=/var/www/wordpress/wp-content/plugins
+    register: "pth"
+
+  - debug: msg="plugins directory exists"
+    when: pth.stat.isdir is defined and pth.stat.isdir
+
+  - name: download wp admin ui customize plugin
+    get_url: >
+      url=https://downloads.wordpress.org/plugin/wp-admin-ui-customize.1.5.3.zip
+      dest=/home/vagrant/wp-admin-ui-customize.1.5.3.zip
+    sudo: yes
+
+  - name: extract wp-admin-ui
+    unarchive: >
+      src=/home/vagrant/wp-admin-ui-customize.1.5.3.zip
+      dest=/var/www/wordpress/wp-content/plugins/
+      copy=no
+    sudo: yes
+
+  - name: download wp-rest-api plugin
+    get_url: >
+      url=https://github.com/WP-API/WP-API/archive/2.0-beta3.tar.gz
+      dest=/home/vagrant/wp-api-2.0-beta3.tar.gz
+    sudo: yes
+
+  - name: extract wp-rest-api
+    unarchive: >
+      src=/home/vagrant/wp-api-2.0-beta3.tar.gz
+      dest=/var/www/wordpress/wp-content/plugins/
+      copy=no
+    sudo: yes

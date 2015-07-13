@@ -8,4 +8,5 @@
       - nginx
       - mysql-server
       - python-mysqldb #for ansible
+      - unzip
     sudo: yes
