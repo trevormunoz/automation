@@ -12,3 +12,5 @@ wp:
   sha256sum: 3c4e2cc3af289366ff5352e35c3f80fca2dcaed3d56a79f33b25374c356c3f90
   auto_up_disable: false
   core_update_level: true
+backup:
+  date: 2015-07-13
