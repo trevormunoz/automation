@@ -31,3 +31,14 @@
       dest=/var/www/wordpress/wp-content/plugins/
       copy=no
     sudo: yes
+
+  - name: copy child theme files
+    copy: src=kap-twenty-fifteen-child.tgz dest=/home/vagrant/kap-twenty-fifteen-child.tgz
+    sudo: yes
+
+  - name: load child theme
+    unarchive: >
+      src=/home/vagrant/kap-twenty-fifteen-child.tgz
+      dest=/var/www/wordpress/wp-content/themes/
+      copy=no
+    sudo: yes

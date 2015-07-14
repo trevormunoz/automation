@@ -8,4 +8,4 @@
       - nginx
       - php-fpm
       - wordpress
-      - plugins
+      - wp-custom
