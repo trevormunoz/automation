@@ -1,2 +1,6 @@
 .vagrant
 data/
+**/secret.yml
+*.cert
+*.crt
+*.key
