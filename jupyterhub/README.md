@@ -1,6 +1,6 @@
 # jupyterhub
 
-set up a jupyterhub server on a cloud server
+set up a jupyterhub on a remote server
 
 ### Prerequisites
 * SSL certificate
