@@ -1,0 +1,9 @@
+---
+  - name: start jupyterhub
+    command: nohup jupyterhub -f {{ hub_config_dir }}/jupyterhub_config.py
+    environment:
+      PATH: /opt/anaconda/envs/{{ conda_env_name }}/bin:{{ ansible_env.PATH }}
+      CONFIGPROXY_AUTH_TOKEN: '{{ hub_configproxy_token }}'
+      GITHUB_CLIENT_ID: '{{ github_client_id }}'
+      GITHUB_CLIENT_SECRET: '{{ github_client_secret }}'
+      OAUTH_CALLBACK_URL: '{{ github_oauth_callback_url }}'

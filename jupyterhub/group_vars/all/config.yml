@@ -1,0 +1,12 @@
+---
+  miniconda_sha256sum: cbd86f49008319416d1e57f9ac43a42445058f06aaeebe5ab974769887a8628b
+  jq_sha256sum: b9b63aa4b3cc85df8bdca884effb69d66e9ebd717454a9e212d9423ffe3e955f
+  conda_env_name: hub
+  hub_ssl_cert_path: /srv/jupyterhub/ca-bundle.cert
+  hub_ssl_protected_key_path: /srv/jupyterhub/ssl.protected.key
+  hub_ssl_key_path: /srv/jupyterhub/ssl.key
+  key_password: "{{ssl_passphrase}}"
+  hub_ip: 104.236.74.107
+  hub_port: 443
+  hub_config_dir: /etc/jupyterhub
+  hub_runtime_dir: /var/run/jupyterhub

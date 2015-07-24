@@ -1,0 +1,12 @@
+---
+  - name: set up a jupyterhub
+    hosts: stage
+    user: root
+    vars_prompt:
+      - name: ssl_passphrase
+        prompt: "Enter SSL certificate pass phrase"
+        private: false
+    roles:
+      - system
+      - python
+      - jupyterhub
