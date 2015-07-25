@@ -1,6 +1,8 @@
 ---
   - name: start jupyterhub
     command: nohup jupyterhub -f {{ hub_config_dir }}/jupyterhub_config.py
+    async: 15768000 # hack until proper daemonization
+    poll: 0
     environment:
       PATH: /opt/anaconda/envs/{{ conda_env_name }}/bin:{{ ansible_env.PATH }}
       CONFIGPROXY_AUTH_TOKEN: '{{ hub_configproxy_token }}'
