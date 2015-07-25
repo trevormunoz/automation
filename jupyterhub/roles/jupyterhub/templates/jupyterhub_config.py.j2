@@ -231,10 +231,10 @@ c.JupyterHub.ssl_key = '{{ hub_ssl_key_path }}'
 # The notebook directory for the single-user server
 #
 # `~` will be expanded to the user's home directory
-# c.Spawner.notebook_dir = ''
+c.Spawner.notebook_dir = '~/exercises'
 
 # Extra arguments to be passed to the single-user server
-# c.Spawner.args = traitlets.Undefined
+c.Spawner.args = ['--NotebookApp.default_url=/exercises/HILT2015.ipynb']
 
 # The IP address (or hostname) the single-user server should listen on
 # c.Spawner.ip = 'localhost'
