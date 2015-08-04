@@ -36,9 +36,15 @@
     copy: src=kap-twenty-fifteen-child.tgz dest=/home/vagrant/kap-twenty-fifteen-child.tgz
     sudo: yes
 
+  - name: make sure theme directory exists
+    file: path=/var/www/wordpress/wp-content/themes/kap-twenty-fifteen-child state=directory
+    sudo: yes
+
   - name: load child theme
     unarchive: >
       src=/home/vagrant/kap-twenty-fifteen-child.tgz
-      dest=/var/www/wordpress/wp-content/themes/
+      dest=/var/www/wordpress/wp-content/themes/kap-twenty-fifteen-child
       copy=no
     sudo: yes
+    notify:
+      - restart nginx
