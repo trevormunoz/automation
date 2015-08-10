@@ -58,4 +58,4 @@ jupyterhub
 * navigate to the public IP of your server and enjoy
 
 ### More
-* You pdon't need the `sync.yml` playbook or the exercises role to run a jupyterhub server. These are for copying sample data and notebooks to user directories. YMMV.
+* You don't need the `sync.yml` playbook or the exercises role to run a jupyterhub server. These are for copying sample data and notebooks to user directories. YMMV.
