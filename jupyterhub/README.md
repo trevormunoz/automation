@@ -10,6 +10,8 @@ set up a jupyterhub on a remote server
 5. Github client id secret
 6. Github oauth callback url
  
+Items #1-2 can be self-signed certificates but users will get scary security warnings in their browser.
+
 Items #4-6 should go in secret.yml \(see below\), along with a value for `hub_configproxy_token`, [see Jupyterhub "Getting Started"](https://github.com/jupyter/jupyterhub/blob/master/docs/getting-started.md#security)
 
 ### Layout
@@ -54,6 +56,7 @@ jupyterhub
 * git clone https://github.com/trevormunoz/automation.git
 * cd jupyterhub
 * edit `hosts` to point at your server
+* edit `config.yml` to match the information in `hosts`
 * ansible-playbook -v jupyterhub.yml
 * navigate to the public IP of your server and enjoy
 
