@@ -6,6 +6,14 @@
   - debug: msg="plugins directory exists"
     when: pth.stat.isdir is defined and pth.stat.isdir
 
+  - name: make sure mu-plugins directory exists
+    file: path=/var/www/wordpress/wp-content/mu-plugins state=directory
+    sudo: yes
+
+  - name: copy mu-plugin files
+    copy: src=kap_functions.php dest=/var/www/wordpress/wp-content/mu-plugins/kap_functions.php
+    sudo: yes
+
   - name: download wp admin ui customize plugin
     get_url: >
       url=https://downloads.wordpress.org/plugin/wp-admin-ui-customize.1.5.3.zip

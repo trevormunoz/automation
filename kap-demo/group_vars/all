@@ -13,4 +13,4 @@ wp:
   auto_up_disable: false
   core_update_level: true
 backup:
-  date: 2015-07-13
+  date: 2015-08-12
