@@ -16,26 +16,26 @@
 
   - name: download wp admin ui customize plugin
     get_url: >
-      url=https://downloads.wordpress.org/plugin/wp-admin-ui-customize.1.5.3.zip
-      dest=/home/vagrant/wp-admin-ui-customize.1.5.3.zip
+      url=https://downloads.wordpress.org/plugin/wp-admin-ui-customize.1.5.5.zip
+      dest=/home/vagrant/wp-admin-ui-customize.1.5.5.zip
     sudo: yes
 
   - name: extract wp-admin-ui
     unarchive: >
-      src=/home/vagrant/wp-admin-ui-customize.1.5.3.zip
+      src=/home/vagrant/wp-admin-ui-customize.1.5.5.zip
       dest=/var/www/wordpress/wp-content/plugins/
       copy=no
     sudo: yes
 
   - name: download wp-rest-api plugin
     get_url: >
-      url=https://github.com/WP-API/WP-API/archive/2.0-beta3.tar.gz
-      dest=/home/vagrant/wp-api-2.0-beta3.tar.gz
+      url=https://github.com/WP-API/WP-API/archive/2.0-beta4.tar.gz
+      dest=/home/vagrant/wp-api-2.0-beta4.tar.gz
     sudo: yes
 
   - name: extract wp-rest-api
     unarchive: >
-      src=/home/vagrant/wp-api-2.0-beta3.tar.gz
+      src=/home/vagrant/wp-api-2.0-beta4.tar.gz
       dest=/var/www/wordpress/wp-content/plugins/
       copy=no
     sudo: yes
