@@ -8,8 +8,8 @@ db:
 server:
   name: wordpress.local
 wp:
-  version: 4.2.2
-  sha256sum: 3c4e2cc3af289366ff5352e35c3f80fca2dcaed3d56a79f33b25374c356c3f90
+  version: 4.2.4
+  sha256sum: 42ca594afc709cbef8528a6096f5a1efe96dcf3164e7ce321e87d57ae015cc82
   auto_up_disable: false
   core_update_level: true
 backup:
