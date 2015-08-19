@@ -4,7 +4,7 @@
     sudo: yes
 
   - name: create wordpress db
-    mysql_db: name={{ db.name }} state=present
+    mysql_db: name={{ db_name }} state=present
 
   - name: create wordpress db user
-    mysql_user: name={{ db.user }} password={{ db.password }} priv={{ db.name }}.*:ALL host='{{ db.host }}' state=present
+    mysql_user: name={{ db_user }} password={{ db_password }} priv={{ db_name }}.*:ALL host='{{ db_host }}' state=present

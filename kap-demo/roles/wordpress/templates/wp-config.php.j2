@@ -16,16 +16,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', '{{ db.name }}');
+define('DB_NAME', '{{ db_name }}');
 
 /** MySQL database username */
-define('DB_USER', '{{ db.user }}');
+define('DB_USER', '{{ db_user }}');
 
 /** MySQL database password */
-define('DB_PASSWORD', '{{ db.password }}');
+define('DB_PASSWORD', '{{ db_password }}');
 
 /** MySQL hostname */
-define('DB_HOST', '{{ db.host }}');
+define('DB_HOST', '{{ db_host }}');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -84,9 +84,9 @@ if ( !defined('ABSPATH') )
 require_once(ABSPATH . 'wp-settings.php');
 
 /** Disable Automatic Updates Completely */
-define( 'AUTOMATIC_UPDATER_DISABLED', {{ wp.auto_up_disable }} );
+define( 'AUTOMATIC_UPDATER_DISABLED', {{ wp_auto_up_disable }} );
 
 /** Define AUTOMATIC Updates for Components. */
-define( 'WP_AUTO_UPDATE_CORE', {{ wp.core_update_level }} );
+define( 'WP_AUTO_UPDATE_CORE', {{ wp_core_update_level }} );
 
 define('FS_METHOD', 'direct');

@@ -1,9 +1,9 @@
 ---
 - name: Download WordPress
   get_url: >
-    url=http://wordpress.org/wordpress-{{ wp.version }}.tar.gz
-    dest=/home/vagrant/wordpress-{{ wp.version }}.tar.gz
-    sha256sum="{{ wp.sha256sum }}"
+    url=http://wordpress.org/wordpress-{{ wp_version }}.tar.gz
+    dest=/home/vagrant/wordpress-{{ wp_version }}.tar.gz
+    sha256sum="{{ wp_sha256sum }}"
 
 - name: Ensure wordpress dir exists
   file: dest=/var/www/wordpress state=directory
@@ -11,7 +11,7 @@
 
 - name: Extract archive
   unarchive: >
-    src=/home/vagrant/wordpress-{{ wp.version }}.tar.gz
+    src=/home/vagrant/wordpress-{{ wp_version }}.tar.gz
     dest=/var/www/
     copy=no
   sudo: yes

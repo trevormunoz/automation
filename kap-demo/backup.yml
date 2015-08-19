@@ -5,6 +5,6 @@
     tasks:
       - name: dump db to wordpress-local.sql
         mysql_db: >
-          state=dump name={{ db.name }}
+          state=dump name={{ db_name }}
           target=/vagrant/data/wordpress-local-{{ ansible_date_time.date }}.sql
         sudo: yes
