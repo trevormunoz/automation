@@ -1,0 +1,18 @@
+---
+  - name: install packages
+    apt: pkg={{ item }} update_cache=yes cache_valid_time=3600
+    with_items:
+      - libfcgi0ldbl
+      - libjpeg8
+      - libtiff5
+      - zlib1g
+      - libstdc++6
+      - libmemcached10
+      - nginx
+      - supervisor
+      - iipimage-server
+    sudo: yes
+
+  - name: Ensure iipsrv fcgi dir exists
+    file: dest=/var/www/iipimage/ state=directory
+    sudo: yes

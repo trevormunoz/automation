@@ -1,0 +1,8 @@
+---
+  - name: set up an iipimage-server install
+    hosts: local
+    user: ubuntu  # Vagrantfile overrides for vagrant
+    roles:
+      - system
+      - supervisor
+      - nginx
