@@ -1,0 +1,23 @@
+---
+- name: Download Elasticsearch
+  get_url: >
+    url=https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-{{ es_version }}.tar.gz
+    dest=/home/vagrant/elasticsearch-{{ es_version }}.tar.gz
+    sha256sum="{{ es_sha256sum }}"
+
+- name: Make sure Elasticsearch dir exists
+  file: dest=/usr/local/bin/elasticsearch-{{ es_version }} state=directory
+  sudo: yes
+
+- name: Extract archive
+  unarchive: >
+    src=/home/vagrant/elasticsearch-{{ es_version }}.tar.gz
+    dest=/usr/local/bin/
+    copy=no
+  sudo: yes
+
+- name: Start Elasticsearch
+  shell: nohup /usr/local/bin/elasticsearch-{{ es_version }}/bin/elasticsearch &
+  async: 15768000 # hack until proper daemonization
+  poll: 0
+  sudo: yes
