@@ -40,6 +40,16 @@
       copy=no
     sudo: yes
 
+  - name: copy db dump to box
+    copy: src=data/wordpress-local-{{ backup_date }}.sql dest=/home/vagrant/
+
+  - name: load db dump to wordpress-local.sql
+    mysql_db: >
+      name={{ db_name }}
+      state=import
+      target=/vagrant/data/wordpress-local-{{ backup_date }}.sql
+    sudo: yes
+
   - name: copy child theme files
     copy: src=kap-twenty-fifteen-child.tgz dest=/home/vagrant/kap-twenty-fifteen-child.tgz
     sudo: yes
