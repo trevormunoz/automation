@@ -2,15 +2,20 @@
   - name: install packages
     apt: pkg={{ item }} update_cache=yes cache_valid_time=3600
     with_items:
+      - git
+      - autoconf
+      - automake
+      - libtool
       - libfcgi0ldbl
       - libjpeg8
+      - libjpeg8-dev
       - libtiff5
+      - libtiff5-dev
       - zlib1g
       - libstdc++6
       - libmemcached10
       - nginx
       - supervisor
-      - iipimage-server
     sudo: yes
 
   - name: Ensure iipsrv fcgi dir exists
