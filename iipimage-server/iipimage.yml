@@ -1,6 +1,6 @@
 ---
   - name: set up an iipimage-server install
-    hosts: local
+    hosts: stage
     user: ubuntu  # Vagrantfile overrides for vagrant
     roles:
       - system
