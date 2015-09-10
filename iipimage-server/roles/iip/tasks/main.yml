@@ -1,0 +1,18 @@
+---
+  - name: Make sure iipimage-server directory exists
+    file: path=/usr/lib/iipimage-server state=directory
+    sudo: yes
+
+  - name: Clone development version
+    git: >
+      repo=https://github.com/ruven/iipsrv.git
+      dest=/usr/lib/iipimage-server
+    sudo: yes
+
+  - name: Build iipimage-server
+    command: chdir=/usr/lib/iipimage-server {{ item }} creates=/usr/lib/iipimage-server/src/iipsrv.fcgi
+    with_items:
+      - ./autogen.sh
+      - ./configure
+      - make
+    sudo: yes

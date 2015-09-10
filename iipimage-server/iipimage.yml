@@ -4,5 +4,6 @@
     user: ubuntu  # Vagrantfile overrides for vagrant
     roles:
       - system
+      - iip
       - supervisor
       - nginx
