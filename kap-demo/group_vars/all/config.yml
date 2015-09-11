@@ -4,6 +4,10 @@ db_user: wordpress
 db_host: localhost
 es_version: 1.7.1
 es_sha256sum: 86a0c20eea6ef55b14345bff5adf896e6332437b19180c4582a346394abde019
+es_cluster_name: kap-demo
+es_node_name: es-1
+es_data_path: /vagrant/data
+es_cors_hostname: 192\.168\.33\.10
 server_name: wordpress.local
 wp_version: 4.3
 wp_sha256sum: 3b0db3abe8504f15a33cf64188a493ec0de01eaa8d20e37c3d6a1d9fa0a40fb4

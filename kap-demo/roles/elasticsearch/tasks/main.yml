@@ -16,6 +16,12 @@
     copy=no
   sudo: yes
 
+- name: Add Elasticsearch config
+  template: >
+    src=elasticsearch.yml.j2
+    dest=/usr/local/bin/elasticsearch-{{ es_version }}/config/elasticsearch.yml
+  sudo: yes
+
 - name: Start Elasticsearch
   shell: nohup /usr/local/bin/elasticsearch-{{ es_version }}/bin/elasticsearch &
   async: 15768000 # hack until proper daemonization
