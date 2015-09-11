@@ -4,7 +4,10 @@
     sudo: yes
 
   - name: copy nginx global conf
-    copy: src=restrictions.conf dest=/etc/nginx/conf/global/restrictions.conf
+    copy: src={{ item }}.conf dest=/etc/nginx/conf/global/{{ item }}.conf
+    with_items:
+      - restrictions
+      - cors
     sudo: yes
     notify: restart nginx
 

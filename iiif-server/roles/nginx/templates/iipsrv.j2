@@ -17,11 +17,14 @@ server {
       fastcgi_param   QUERY_STRING $query_string;
       fastcgi_param   CONTENT_TYPE $content_type;
       fastcgi_param   CONTENT_LENGTH $content_length;
-      add_header 'Access-Control-Allow-Origin' '*';
     }
 
     location /manifests/ {
       autoindex on;
+
+      location ~* "/manifests/[\d]{4}/manifest\.json" {
+        include conf/global/cors.conf;
+      }
     }
 
     include conf/global/restrictions.conf;
