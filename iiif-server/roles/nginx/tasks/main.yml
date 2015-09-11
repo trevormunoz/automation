@@ -8,12 +8,12 @@
     sudo: yes
     notify: restart nginx
 
-  - name: copy nginx server conf
+  - name: copy server confs
     template: src=iipsrv.j2 dest=/etc/nginx/sites-available/iipsrv
     sudo: yes
     notify: restart nginx
 
-  - name: symlink nginx server conf
+  - name: symlink server confs
     file: src=/etc/nginx/sites-available/iipsrv dest=/etc/nginx/sites-enabled/iipsrv state=link
     sudo: yes
     notify: restart nginx
@@ -22,3 +22,7 @@
     file: path=/etc/nginx/sites-enabled/default state=absent
     sudo: yes
     notify: restart nginx
+
+  - name: make sure manifests dir exists
+    file: path=/var/www/iiif/manifests state=directory
+    sudo: yes

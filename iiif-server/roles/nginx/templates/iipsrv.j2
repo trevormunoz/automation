@@ -4,11 +4,11 @@ upstream iip {
 
 server {
 
-    listen 80;
-    server_name {{ server_name }};
-    root /var/www/iipimage;
+    listen 80 default_server;
+    server_name {{ iip_server_name }};
+    root /var/www/iiif;
     rewrite_log on;
-    rewrite ^/iiif/(.*)$ /fcgi-bin/iipserver.fcgi?IIIF=$1 last;
+    rewrite ^/iiif-image/(.*)$ /fcgi-bin/iipserver.fcgi?IIIF=$1 last;
 
     location /fcgi-bin/iipserver.fcgi {
       fastcgi_pass    iip;
@@ -18,6 +18,10 @@ server {
       fastcgi_param   CONTENT_TYPE $content_type;
       fastcgi_param   CONTENT_LENGTH $content_length;
       add_header 'Access-Control-Allow-Origin' '*';
+    }
+
+    location /manifests/ {
+      autoindex on;
     }
 
     include conf/global/restrictions.conf;

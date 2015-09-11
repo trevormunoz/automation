@@ -1,0 +1,5 @@
+[local]
+iiif-server-vagrant ansible_ssh_host=192.168.33.12 # Really just for testing
+
+[stage]
+iiif.remote.aws.com
