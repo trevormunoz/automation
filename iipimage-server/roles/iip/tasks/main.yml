@@ -16,3 +16,7 @@
       - ./configure
       - make
     sudo: yes
+
+  - name: Make sure iipimage-server log dir exists
+    file: path=/var/log/iipsrv state=directory owner=www-data group=adm recurse=yes
+    sudo: yes
