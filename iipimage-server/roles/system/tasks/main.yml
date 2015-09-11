@@ -17,7 +17,3 @@
       - nginx
       - supervisor
     sudo: yes
-
-  - name: Ensure iipsrv fcgi dir exists
-    file: dest=/var/www/iipimage/ state=directory
-    sudo: yes
