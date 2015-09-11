@@ -7,6 +7,8 @@ server {
     listen 80;
     server_name {{ server_name }};
     root /var/www/iipimage;
+    rewrite_log on;
+    rewrite ^/iiif/(.*)$ /fcgi-bin/iipserver.fcgi?IIIF=$1 last;
 
     location /fcgi-bin/iipserver.fcgi {
       fastcgi_pass    iip;
