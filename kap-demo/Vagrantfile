@@ -8,7 +8,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "wordpress" do |wordpress|
     wordpress.vm.hostname = "wordpress"
     wordpress.vm.network "private_network", ip: "192.168.33.10"
-    wordpress.vm.synced_folder "data/", "/vagrant/data", create: true
+    wordpress.vm.synced_folder "data/wordpress", "/vagrant/data", create: true
 
     config.vm.provider "virtualbox" do |vb|
       vb.name = "kap-wordpress"
@@ -31,7 +31,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "elasticsearch" do |es|
     es.vm.hostname = "elasticsearch"
     es.vm.network "private_network", ip: "192.168.33.11"
-    es.vm.synced_folder ".", "/vagrant", disabled: true
+    es.vm.synced_folder "data/elasticsearch", "/vagrant/data", create: true
 
     config.vm.provider "virtualbox" do |vb|
       vb.name = "kap-elasticsearch"

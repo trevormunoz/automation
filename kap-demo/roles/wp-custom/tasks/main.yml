@@ -27,21 +27,21 @@
       copy=no
     sudo: yes
 
-  - name: download wp-rest-api plugin
+  - name: download types plugin
     get_url: >
-      url=https://github.com/WP-API/WP-API/archive/2.0-beta4.tar.gz
-      dest=/home/vagrant/wp-api-2.0-beta4.tar.gz
+      url=https://downloads.wordpress.org/plugin/types.1.8.5.zip
+      dest=/home/vagrant/types.1.8.5.zip
     sudo: yes
 
-  - name: extract wp-rest-api
+  - name: extract types
     unarchive: >
-      src=/home/vagrant/wp-api-2.0-beta4.tar.gz
+      src=/home/vagrant/types.1.8.5.zip
       dest=/var/www/wordpress/wp-content/plugins/
       copy=no
     sudo: yes
 
   - name: copy db dump to box
-    copy: src=data/wordpress-local-{{ backup_date }}.sql dest=/home/vagrant/
+    copy: src=data/wordpress/wordpress-local-{{ backup_date }}.sql dest=/home/vagrant/
 
   - name: load db dump to wordpress-local.sql
     mysql_db: >
