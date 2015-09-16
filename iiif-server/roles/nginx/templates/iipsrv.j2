@@ -8,7 +8,11 @@ server {
     server_name {{ iip_server_name }};
     root /var/www/iiif;
     rewrite_log on;
-    rewrite ^/iiif-image/(.*)$ /fcgi-bin/iipserver.fcgi?IIIF=$1 last;
+
+    rewrite ^/iiif-image/([^/]+)$ /fcgi-bin/iipserver.fcgi?IIIF=$1 last;
+    rewrite ^/iiif-image/([^/]+(?=/))((/[^/]+)*)$ /fcgi-bin/iipserver.fcgi?IIIF=$1$2 last;
+    rewrite ^/iiif-presentation/([^/]+)/manifest$ /manifests/$1-manifest.json last;
+
 
     location /fcgi-bin/iipserver.fcgi {
       fastcgi_pass    iip;
@@ -22,7 +26,13 @@ server {
     location /manifests/ {
       autoindex on;
 
-      location ~* "/manifests/[\d]{4}/manifest\.json" {
+      location ~* "/manifests/.*/manifest" {
+
+        include conf/global/cors.conf;
+      }
+
+      location ~* "/manifests/[^/]+-manifest\.json" {
+        try_files $uri =404;
         include conf/global/cors.conf;
       }
     }
