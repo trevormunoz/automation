@@ -1,3 +1,4 @@
+.agignore
 .vagrant
 data/
 **/secret.yml
