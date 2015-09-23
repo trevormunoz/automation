@@ -36,3 +36,23 @@
     sudo: yes
     tags:
       - search
+
+  - name: install apt key for elasticsearch
+    apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+    sudo: yes
+    tags:
+      -search
+
+  - name: add repository for elasticsearch
+    apt_repository: >
+      repo='deb http://packages.elastic.co/elasticsearch/1.7/debian stable main'
+      state=present
+    sudo: yes
+    tags:
+      -search
+
+  - name: install elasticsearch
+    apt: name=elasticsearch update_cache=yes cache_valid_time=3600
+    sudo: yes
+    tags:
+      - search
