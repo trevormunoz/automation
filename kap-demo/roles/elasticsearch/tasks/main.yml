@@ -5,25 +5,37 @@
     dest=/home/vagrant/elasticsearch-{{ es_version }}.tar.gz
     sha256sum="{{ es_sha256sum }}"
 
-- name: Make sure Elasticsearch dir exists
-  file: dest=/usr/local/bin/elasticsearch-{{ es_version }} state=directory
+- name: Set elasticsearch to run on boot
+  service: name=elasticsearch enabled=yes
   sudo: yes
 
-- name: Extract archive
-  unarchive: >
-    src=/home/vagrant/elasticsearch-{{ es_version }}.tar.gz
-    dest=/usr/local/bin/
-    copy=no
+- name: Set ES_HEAP_SIZE
+  lineinfile: >
+    dest=/etc/default/elasticsearch
+    regexp=^#ES_HEAP_SIZE=2g
+    line=ES_HEAP_SIZE=1g
   sudo: yes
+  notify: restart elasticsearch
 
-- name: Add Elasticsearch config
+- name: Configure memory locking
+  lineinfile: >
+    dest=/etc/default/elasticsearch
+    regexp=^#MAX_LOCKED_MEMORY=unlimited
+    line=MAX_LOCKED_MEMORY=unlimited
+  sudo: yes
+  notify: restart elasticsearch
+
+- name: Configure systemd for memory locking
+  lineinfile: >
+    dest=/usr/lib/systemd/system/elasticsearch.service
+    regexp=^#LimitMEMLOCK=infinity
+    line=LimitMEMLOCK=infinity
+  sudo: yes
+  notify: restart elasticsearch
+
+- name: Add cluster config
   template: >
     src=elasticsearch.yml.j2
-    dest=/usr/local/bin/elasticsearch-{{ es_version }}/config/elasticsearch.yml
-  sudo: yes
-
-- name: Start Elasticsearch
-  shell: nohup /usr/local/bin/elasticsearch-{{ es_version }}/bin/elasticsearch &
-  async: 15768000 # hack until proper daemonization
-  poll: 0
+    dest=/etc/elasticsearch/elasticsearch.yml
+  notify: start elasticsearch
   sudo: yes
