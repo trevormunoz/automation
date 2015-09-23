@@ -1,9 +1,9 @@
 ---
-- name: Download Elasticsearch
-  get_url: >
-    url=https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-{{ es_version }}.tar.gz
-    dest=/home/vagrant/elasticsearch-{{ es_version }}.tar.gz
-    sha256sum="{{ es_sha256sum }}"
+  # Only needed for vagrant b/c permissions on synced folders
+- name: Add elasticsearch user to vagrant group
+  user: name=elasticsearch groups=vagrant append=yes
+  when: "'local' in group_names"
+  sudo: yes
 
 - name: Set elasticsearch to run on boot
   service: name=elasticsearch enabled=yes
