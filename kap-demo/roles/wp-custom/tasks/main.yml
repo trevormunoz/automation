@@ -51,7 +51,7 @@
     sudo: yes
 
   - name: copy child theme files
-    copy: src=kap-twenty-fifteen-child.tgz dest=/home/vagrant/kap-twenty-fifteen-child.tgz
+    copy: src=kap-twenty-fifteen-child.zip dest=/home/vagrant/kap-twenty-fifteen-child.zip
     sudo: yes
 
   - name: make sure theme directory exists
@@ -60,7 +60,7 @@
 
   - name: load child theme
     unarchive: >
-      src=/home/vagrant/kap-twenty-fifteen-child.tgz
+      src=/home/vagrant/kap-twenty-fifteen-child.zip
       dest=/var/www/wordpress/wp-content/themes/kap-twenty-fifteen-child
       copy=no
     sudo: yes
