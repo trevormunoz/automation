@@ -39,3 +39,7 @@
     dest=/etc/elasticsearch/elasticsearch.yml
   notify: start elasticsearch
   sudo: yes
+
+- name: Make sure scripts directory exists
+  file: dest=/etc/elasticsearch/scripts state=directory
+  sudo: yes
