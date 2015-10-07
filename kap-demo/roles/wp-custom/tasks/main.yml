@@ -51,17 +51,17 @@
     sudo: yes
 
   - name: copy child theme files
-    copy: src=kap-twenty-fifteen-child.zip dest=/home/vagrant/kap-twenty-fifteen-child.zip
+    copy: src=katherine-anne.zip dest=/home/vagrant/katherine-anne.zip
     sudo: yes
 
   - name: make sure theme directory exists
-    file: path=/var/www/wordpress/wp-content/themes/kap-twenty-fifteen-child state=directory
+    file: path=/var/www/wordpress/wp-content/themes/katherine-anne state=directory
     sudo: yes
 
   - name: load child theme
     unarchive: >
-      src=/home/vagrant/kap-twenty-fifteen-child.zip
-      dest=/var/www/wordpress/wp-content/themes/kap-twenty-fifteen-child
+      src=/home/vagrant/katherine-anne.zip
+      dest=/var/www/wordpress/wp-content/themes/katherine-anne
       copy=no
     sudo: yes
     notify:
