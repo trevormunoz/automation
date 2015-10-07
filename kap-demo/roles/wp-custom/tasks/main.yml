@@ -29,13 +29,13 @@
 
   - name: download types plugin
     get_url: >
-      url=https://downloads.wordpress.org/plugin/types.1.8.5.zip
-      dest=/home/vagrant/types.1.8.5.zip
+      url=https://downloads.wordpress.org/plugin/types.1.8.6.2.zip
+      dest=/home/vagrant/types.1.8.6.2.zip
     sudo: yes
 
   - name: extract types
     unarchive: >
-      src=/home/vagrant/types.1.8.5.zip
+      src=/home/vagrant/types.1.8.6.2.zip
       dest=/var/www/wordpress/wp-content/plugins/
       copy=no
     sudo: yes
