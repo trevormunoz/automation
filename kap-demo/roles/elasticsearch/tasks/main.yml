@@ -43,3 +43,10 @@
 - name: Make sure scripts directory exists
   file: dest=/etc/elasticsearch/scripts state=directory
   sudo: yes
+
+- name: Extract zip archive
+  unarchive: >
+    src=kap-query-templates.zip
+    dest=/etc/elasticsearch/scripts
+  sudo: yes
+  notify: restart elasticsearch
