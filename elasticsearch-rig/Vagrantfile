@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  config.vm.box = "ubuntu/trusty64"
+
+  config.vm.define "elasticsearch" do |es|
+    es.vm.hostname = "es-dev-rig"
+    es.vm.network "private_network", ip: "192.168.33.11"
+    es.vm.synced_folder "ansible/data/elasticsearch", "/vagrant/data",
+      :mount_options => ["dmode=777","fmode=664"], create: true
+
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "elasticsearch-dev"
+      vb.memory = "2048"
+    end
+
+    es.vm.provision "ansible", run: "always" do |ansible|
+      ansible.playbook = "ansible/elasticsearch-rig.yml"
+      ansible.inventory_path = "ansible/hosts"
+      ansible.limit = "elasticsearch-dev"
+      ansible.verbose = 'v'
+
+      ansible.extra_vars = { ansible_ssh_user: 'vagrant'}
+    end
+  end
+end

@@ -1,0 +1,8 @@
+---
+  - name: start elasticsearch
+    service: name=elasticsearch state=started
+    become: yes
+
+  - name: restart elasticsearch
+    service: name=elasticsearch state=restarted
+    become: yes

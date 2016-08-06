@@ -1,0 +1,6 @@
+---
+server_name: vm.elasticsearch.local
+server_ip: 192.168.33.11
+es_cluster_name: es-dev-rig
+es_node_name: es-dev-1
+es_data_path: /vagrant/data

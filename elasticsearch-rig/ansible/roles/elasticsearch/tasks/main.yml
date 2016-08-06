@@ -1,0 +1,41 @@
+---
+  # Only needed for vagrant b/c permissions on synced folders
+- name: Add elasticsearch user to vagrant group
+  user: name=elasticsearch groups=vagrant append=yes
+  when: "'vm' in group_names"
+  become: yes
+
+- name: Set elasticsearch to run on boot
+  service: name=elasticsearch enabled=yes
+  become: yes
+
+- name: Set ES_HEAP_SIZE
+  lineinfile: >
+    dest=/etc/default/elasticsearch
+    regexp=^#ES_HEAP_SIZE=2g
+    line=ES_HEAP_SIZE=1g
+  become: yes
+  notify: restart elasticsearch
+
+- name: Configure memory locking
+  lineinfile: >
+    dest=/etc/default/elasticsearch
+    regexp=^#MAX_LOCKED_MEMORY=unlimited
+    line=MAX_LOCKED_MEMORY=unlimited
+  become: yes
+  notify: restart elasticsearch
+
+- name: Configure systemd for memory locking
+  lineinfile: >
+    dest=/usr/lib/systemd/system/elasticsearch.service
+    regexp=^#LimitMEMLOCK=infinity
+    line=LimitMEMLOCK=infinity
+  become: yes
+  notify: restart elasticsearch
+
+- name: Add cluster config
+  template: >
+    src=elasticsearch.yml.j2
+    dest=/etc/elasticsearch/elasticsearch.yml
+  notify: start elasticsearch
+  become: yes

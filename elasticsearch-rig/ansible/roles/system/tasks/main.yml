@@ -1,0 +1,42 @@
+---
+  - name: install packages
+    apt: pkg={{ item }} update_cache=yes cache_valid_time=3600
+    with_items:
+      - nginx
+      - unzip
+    become: yes
+
+  - name: add repository for oracle java
+    apt_repository: repo='ppa:webupd8team/java'
+    become: yes
+
+  - name: accept oracle license
+    debconf: >
+      name='oracle-java8-installer'
+      question='shared/accepted-oracle-license-v1-1'
+      value='true'
+      vtype='select'
+    become: yes
+
+  - name: install packages for elasticsearch
+    apt: pkg={{ item }} update_cache=yes cache_valid_time=3600
+    with_items:
+      - oracle-java8-installer
+    become: yes
+
+  - name: install apt key for elasticsearch
+    apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+    become: yes
+
+  - name: add repository for elasticsearch
+    apt_repository: >
+      repo='deb http://packages.elastic.co/elasticsearch/2.x/debian stable main'
+      state=present
+    become: yes
+
+  - name: install elasticsearch
+    apt: pkg={{ item }} update_cache=yes cache_valid_time=3600
+    with_items:
+      - elasticsearch
+      - unzip
+    become: yes

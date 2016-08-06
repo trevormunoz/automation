@@ -1,0 +1,8 @@
+---
+  - name: set up an elasticsearch dev rig
+    hosts: vm
+    user: ubuntu  # Vagrantfile overrides for vagrant
+    roles:
+      - system
+      - nginx
+      - elasticsearch
